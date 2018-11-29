@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+  <div class="example-container">
+    <form [formGroup]="this.orderService.form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="$key">
+      <mat-form-field>
+        <input matInput placeholder="Full Name" type="text" formControlName="fullName" [ngClass]="{'is-invalid':submitted && formControls.fullName.errors}" >
+        
+        </mat-form-field>
+        <div class="invalid-feedback" *ngIf="submitted && formControls.fullName.errors" >
+            This is required
+          </div>
+      <mat-form-field>
+          <input matInput placeholder="Email" type="email" formControlName="email" [ngClass]="{'is-invalid':submitted && formControls.email.errors}">
+      </mat-form-field>
+      <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors" >
+          This is required
+        </div>
+      <mat-form-field>
+          <input matInput placeholder="Mobile" type="number" formControlName="mobile" [ngClass]="{'is-invalid':submitted && formControls.mobile.errors}">
+      </mat-form-field>
+      <div class="invalid-feedback" *ngIf="submitted && formControls.mobile.errors" >
+         <label *ngIf="formControls.mobile.errors.required" >This field is required.</label>
+         <label *ngIf="formControls.mobile.errors.minLength" >Atleast 8 number.</label>
+        </div>
+      <mat-form-field>
+        <textarea matInput placeholder="Comment" type="text" formControlName="comment"></textarea>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-select placeholder="Select" formControlName="cityInput">
+          <mat-option  *ngFor="let option of cities" [value]="option.city"  >{{option.city}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button type="submit" value="Submit">Submit</button>
+      </form>
+      <div class="alert alert-info" *ngIf="showSuccessMessage" >
+          Submitted successfully.
+      </div>     
+    </div>
+    </div>
+    <div class="col-md-6">
+      <app-order-list></app-order-list>
+      </div>
+      </div>
+    </div>

@@ -1,0 +1,30 @@
+<form class="form-inline">
+  <input class="form-control" name="searchInput" placeholder="search" >
+</form>
+
+<table class="table table-sm">
+    <thead>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th></th>
+    </thead>
+
+    <ng-container *ngFor="let order of orderArray" >
+      <tr>
+        <td>{{order.fullName}}</td>
+        <td>{{order.email}}</td>
+        <td>{{order.mobile}}</td>
+        <td>{{order.comment}}</td>
+        <td>{{order.cityInput}}</td>
+        <td>
+          <button class="btn btn-outline-info" (click)="orderService.populateForm(order)">Edit</button>
+          <button class="btn btn-outline-info" (click)="onDelete(order.$key)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+
+  </table>
+  <div class="alert alert-danger" *ngIf="showDeleteMessage" >
+    Deleted successfully
+  </div>
