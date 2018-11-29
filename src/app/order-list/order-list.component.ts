@@ -23,6 +23,8 @@ export class OrderListComponent implements OnInit {
             ...item.payload.val()
           };
         });
+        // reverse list
+        this.orderArray.reverse();
       });
   }
 
