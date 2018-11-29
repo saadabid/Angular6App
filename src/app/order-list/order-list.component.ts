@@ -12,6 +12,7 @@ export class OrderListComponent implements OnInit {
   constructor(private orderService: OrderService) { }
   orderArray = [];
   showDeleteMessage: boolean;
+  searchText: string = '';
 
   ngOnInit() {
     this.orderService.getOrders().subscribe(
@@ -25,12 +26,15 @@ export class OrderListComponent implements OnInit {
       });
   }
 
-  onDelete($key){
-    if(confirm('Are you sure you want delete ?')){
+  onDelete($key) {
+    if (confirm('Are you sure you want delete ?')) {
       this.orderService.deleteOrder($key);
       this.showDeleteMessage = true;
-      setTimeout(()=> this.showDeleteMessage = false , 2000);
+      setTimeout(() => this.showDeleteMessage = false , 2000);
     }
   }
 
+  filterCondition(order) {
+    return order.fullName.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1;
+  }
 }
