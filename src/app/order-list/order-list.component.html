@@ -3,6 +3,20 @@
   <button class="btn btn-outline-primary" (click)="searchText=''">x</button>
 </form>
 
+<div class="example-config">
+  Selected range: {{ range | json }}
+</div>
+<kendo-daterange>
+  <label>
+      <span class="label">Start</span>
+      <kendo-dateinput kendoDateRangeStartInput (value)="range.start"></kendo-dateinput>
+  </label>
+  <label>
+      <span class="label">End</span>
+      <kendo-dateinput kendoDateRangeEndInput (value)="range.end"></kendo-dateinput>
+  </label>
+</kendo-daterange>
+
 <table class="table table-sm">
     <thead>
       <th>Full Name</th>
@@ -12,10 +26,11 @@
     </thead>
 
     <ng-container *ngFor="let order of orderArray" >
-      <tr *ngIf="filterCondition(order)">
+      <tr *ngIf="filterByDate(order)">
         <td>{{order.fullName}}</td>
         <td>{{order.email}}</td>
         <td>{{order.mobile}}</td>
+        <td>{{order.date}}</td>
         <td>{{order.comment}}</td>
         <td>{{order.cityInput}}</td>
         <td>

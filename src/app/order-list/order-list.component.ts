@@ -13,6 +13,10 @@ export class OrderListComponent implements OnInit {
   orderArray = [];
   showDeleteMessage: boolean;
   searchText: string = '';
+  range : any = {
+    start: '2018-11-30',
+    end: '2018-11-30'
+  };
 
   ngOnInit() {
     this.orderService.getOrders().subscribe(
@@ -38,5 +42,10 @@ export class OrderListComponent implements OnInit {
 
   filterCondition(order) {
     return order.fullName.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1;
+  }
+
+  filterByDate(order){
+    debugger
+    return order.date >= this.range.start && order.date <= this.range.end
   }
 }

@@ -15,6 +15,7 @@ export class OrderService {
     fullName : new FormControl('', Validators.required),
     email : new FormControl('' , Validators.email),
     mobile : new FormControl('' , [Validators.required , Validators.minLength(8)]),
+    date: new FormControl(''),
     comment : new FormControl(''),
     cityInput : new FormControl('')
   });
@@ -30,6 +31,7 @@ export class OrderService {
       fullName: orders.fullName,
       email: orders.email,
       mobile: orders.mobile,
+      date: orders.date,
       comment: orders.comment,
       cityInput: orders.cityInput
 
@@ -41,6 +43,7 @@ export class OrderService {
         fullName: orders.fullName,
         email: orders.email,
         mobile: orders.mobile,
+        date: orders.date,
         comment: orders.comment,
         cityInput: orders.cityInput
       });

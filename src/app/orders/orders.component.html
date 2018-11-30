@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
   <div class="example-container">
     <form [formGroup]="this.orderService.form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="$key">
@@ -17,6 +17,11 @@
       <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors" >
           This is required
         </div>
+
+        <mat-form-field>
+          <input matInput placeholder="Date" type="date" formControlName="date">
+      </mat-form-field>
+
       <mat-form-field>
           <input matInput placeholder="Mobile" type="number" formControlName="mobile" [ngClass]="{'is-invalid':submitted && formControls.mobile.errors}">
       </mat-form-field>
@@ -40,7 +45,7 @@
       </div>     
     </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <app-order-list></app-order-list>
       </div>
       </div>

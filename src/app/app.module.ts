@@ -23,6 +23,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { OrderListComponent } from './order-list/order-list.component';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+
+
 
 const routes: Route[] = [
   { path: '', redirectTo: '/home' , pathMatch: 'full'},
@@ -70,7 +74,9 @@ const routes: Route[] = [
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    InputsModule,
+    DateInputsModule
   ],
   providers: [OrderService],
   bootstrap: [AppComponent]
